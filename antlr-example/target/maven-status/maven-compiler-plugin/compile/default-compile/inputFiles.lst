@@ -1,1 +1,10 @@
+/workspaces/antlrr/antlr-example/target/generated-sources/antlr4/com/example/SQLiteParserListener.java
+/workspaces/antlrr/antlr-example/target/generated-sources/antlr4/com/example/SQLiteParser.java
+/workspaces/antlrr/antlr-example/target/generated-sources/antlr4/com/example/SQLiteParserVisitor.java
+/workspaces/antlrr/antlr-example/src/main/java/com/example/SQLiteCustomVisitor.java
+/workspaces/antlrr/antlr-example/src/main/java/com/example/SQLiteParserApp.java
+/workspaces/antlrr/antlr-example/target/generated-sources/antlr4/com/example/SQLiteParserBaseVisitor.java
+/workspaces/antlrr/antlr-example/target/generated-sources/antlr4/com/example/SQLiteLexer.java
+/workspaces/antlrr/antlr-example/target/generated-sources/antlr4/com/example/SQLiteParserBaseListener.java
 /workspaces/antlrr/antlr-example/src/main/java/com/example/App.java
+/workspaces/antlrr/antlr-example/src/main/java/com/example/SQLiteCustomListener.java
