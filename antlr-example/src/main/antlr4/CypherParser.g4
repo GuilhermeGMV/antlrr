@@ -31,6 +31,21 @@
 
 parser grammar CypherParser;
 
+@parser::members {
+    // Lista para rastrear variáveis declaradas
+    private java.util.Set<String> existingVariables = new java.util.HashSet<>();
+    
+    // Método para verificar se uma variável existe
+    public boolean variableExists(String name) {
+        return existingVariables.contains(name);
+    }
+    
+    // Método para obter todas as variáveis declaradas
+    public java.util.Set<String> getVariables() {
+        return new java.util.HashSet<>(existingVariables);
+    }
+}
+
 @header {
 package com.example;
 }
@@ -171,8 +186,27 @@ setSt
 
 setItem
     : propertyExpression ASSIGN expression
+      {
+        System.out.println("Atribuição de propriedade: " + $propertyExpression.text + " = " + $expression.text);
+        // Aqui poderíamos validar tipos, verificar se a propriedade existe, etc.
+      }
     | symbol (ASSIGN | ADD_ASSIGN) expression
+      {
+        String operador = $ASSIGN != null ? "=" : "+=";
+        System.out.println("Atribuição de variável: " + $symbol.text + " " + operador + " " + $expression.text);
+        
+        // Verificação semântica: detectar possíveis variáveis não declaradas
+        if (!existingVariables.contains($symbol.text)) {
+          System.out.println("Aviso: Possível variável não declarada anteriormente: " + $symbol.text);
+          // Registrar a variável como tendo sido definida
+          existingVariables.add($symbol.text);
+        }
+      }
     | symbol nodeLabels
+      {
+        System.out.println("Atribuição de rótulos: nó " + $symbol.text + " recebeu rótulos " + $nodeLabels.text);
+        // Verificar se este é um nó válido
+      }
     ;
 
 nodeLabels
